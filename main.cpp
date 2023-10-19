@@ -18,24 +18,24 @@ void print_string_depth (string s, int n) {
 int main () {
     // Create a binary search tree.
     BSTree<string> t;
+    string s;
 
-    // Insert some strings for testing.
-    t.insert("dog");
-    t.insert("bird");
-    t.insert("cat");
-    t.insert("turtle");
-    t.insert("giraffe");
-    t.insert("snake");
-    t.insert("deer");
-    t.insert("groundhog");
-    t.insert("horse");
+    do {
+        // Enter a string to be inserted into the tree
+        cout << "Enter string: ";
+        getline(cin, s);
 
-    // Output the values stored in the tree.
-    cout << "Values stored in the tree are:\n";
-    t.inorder(print_string);
-    cout << "\n";
-
-    cout << "The structure of the tree is as follows:\n";
-    t.preorder(print_string_depth);
-    cout << "\n";
+        // If not an empty string, insert into the tree
+        if (s.size()) {
+            t.insert(s);
+            // Show tree structure
+            cout << "Pre-order traversal:\n";
+            t.preorder(print_string_depth);
+            // Show node heights
+            cout << "Node height values:\n";
+            t.preorder_height();
+            // Blank line for readability
+            cout << endl;
+        }
+    } while (s.size());
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream> // For preorder_height member function
+
 // A Binary Search Tree implementation.
 template <typename T>
 class BSTree {
@@ -57,6 +59,13 @@ private:
 		return p->right ? find(d, p->right) : nullptr; // Check right side...
 	}
 
+	// Determines the height of the subtree rooted at node p. If p is null,
+	// the height is -1. If p has no children, the height is 0. Otherwise,
+	// the height is the max of the height of the left and right sub-trees.
+	int height (node* p) const {
+		// TODO: Implement this function
+	}
+
 	// Helper function to insert a data item into the tree. Takes the data
 	// and a pointer to a node in the tree. Recursively decends down the tree
 	// until position were insertion should take place is found.
@@ -99,6 +108,12 @@ private:
 			preorder(p->left, f, depth + 1);
 			preorder(p->right, f, depth + 1);
 		}
+	}
+
+	// A preorder traversal for a ubtree rooted at node p. Outputs the data
+	// value at node p followed by the height at node p.
+	void preorder_height (node* p) const {
+		// TODO: Implement this function
 	}
 
 public:
@@ -156,4 +171,9 @@ public:
 	// which is the depth.
 	template <typename U>
 	void preorder (U f) const { preorder(root, f, 0); }
+
+	// Perform a preorder traversal of the tree that outputs the data value
+	// of each node along with the height of the node that would be used
+	// in determining the AVL property.
+	void preorder_height () const { preorder_height(root); }
 };
