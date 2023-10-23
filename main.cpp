@@ -38,4 +38,4 @@ int main () {
             cout << endl;
         }
     } while (s.size());
-}
+};

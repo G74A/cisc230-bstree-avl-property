@@ -64,6 +64,17 @@ private:
 	// the height is the max of the height of the left and right sub-trees.
 	int height (node* p) const {
 		// TODO: Implement this function
+		if (p) {
+			f(p->data, height);
+			preorder_height(p->data, height -1);
+			//cout << "has children"<< endl;
+			preorder_height(p->data, height = 0);
+			//cout << "no children" << endl;
+			preorder_height(p->max, f);
+			f(p->data);
+			std::max(p->left, p->right, f); 
+			std::max = (p->left + p->right);
+		}
 	}
 
 	// Helper function to insert a data item into the tree. Takes the data
@@ -102,19 +113,27 @@ private:
 	// data item at p with the given depth, then performs a preorder
 	// traversal on the left and right subtrees passing the depth plus 1.
 	template <typename U>
-	void preorder (node* p, U f, int depth) const {
-		if (p) {
+	struct Preorder {
+		void preorder (node* p, U f, int depth) const {
+			if (p) {
 			f(p->data, depth);
 			preorder(p->left, f, depth + 1);
 			preorder(p->right, f, depth + 1);
 		}
-	}
+	};
 
 	// A preorder traversal for a ubtree rooted at node p. Outputs the data
 	// value at node p followed by the height at node p.
-	void preorder_height (node* p) const {
+	struct f {
+		void preorder_height (node* p) const {
 		// TODO: Implement this function
-	}
+			if (p) {
+				f(p->left, height(p->left));
+				preorder_height(p->left, f);
+				preorder(p->right, f);
+			}
+		}
+	};
 
 public:
 
